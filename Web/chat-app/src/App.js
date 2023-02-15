@@ -3,7 +3,6 @@ import React from 'react';
 import './App.css';
 
 import Thread from "./components/thread";
-import Submission from "./components/submission";
 
 class App extends React.Component {
   render() {
@@ -11,7 +10,6 @@ class App extends React.Component {
       <div className="app">
         <div className="app-inner">
           <Thread />
-          <Submission />
         </div>
       </div>
     );

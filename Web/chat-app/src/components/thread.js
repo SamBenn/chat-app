@@ -1,25 +1,37 @@
+import React from 'react';
+
 import Message from "./message";
+import Submission from "./submission";
 import "./thread.css";
 
-function Thread() {
+class Thread extends React.Component {
+    constructor() {
+        super();
 
-    // get messages in thread
+        this.state = {
+            messages: []
+        };
+    }
+
+    handleSubmission = (form) => {
+        if(!form)
+            return;
+
+        // other validation
+
+        this.setState({ messages: [...this.state.messages, { message: form }] });
+    }
     
-    var messages = [
-        { message: "asdadsfads4" },
-        { message: "234b32b324b" },
-        { message: "edfbwerb" },
-        { message: "n4 5n4nwefgeg" },
-        { message: "234h23h34h" },
-    ];
-
-    return (
-        <div>
-            {messages.map(m => (
-                <Message model={m} />
-            ))}
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                {this.state && this.state.messages.map((m, i) => (
+                    <Message key={i} model={m} />
+                ))}
+                <Submission submissionCallback={this.handleSubmission} />
+            </div>
+        )
+    }
 }
 
 export default Thread;
