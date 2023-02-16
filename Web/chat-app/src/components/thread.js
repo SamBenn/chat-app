@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Message from "./message";
 import Submission from "./submission";
@@ -18,14 +19,16 @@ class Thread extends React.Component {
             return;
 
         // other validation
-
+        axios.get("/test", { proxy: { port: 5000 }}).then((result) => {
+            console.log(result);
+        });
         this.setState({ messages: [...this.state.messages, { message: form }] });
     }
     
     render() {
         return (
             <div>
-                {this.state && this.state.messages.map((m, i) => (
+                {this.state.messages.map((m, i) => (
                     <Message key={i} model={m} />
                 ))}
                 <Submission submissionCallback={this.handleSubmission} />

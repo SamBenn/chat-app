@@ -30,7 +30,7 @@ class Submission extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <input value={this.state.value}
                     onChange={this.handleInputChange} />
-                <button type="submit" >
+                <button type="submit">
                     Submit
                 </button>
             </form>
