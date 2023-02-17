@@ -34,6 +34,9 @@ function extendConfig(config) {
         }
     }
 
+    if(!config)
+        config = {};
+
     let toReturn = extend(config, defaults);
     return toReturn;
 }

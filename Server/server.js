@@ -16,7 +16,17 @@ app.use(function(req, res, next) {
 
 app.listen(port, () => { console.log(`Listening on port ${port}`) });
 
-app.get("/test", (req, res) => {
-    console.log("request");
-    res.send({message: "this is a test", status: 200});
+app.get("/getmessages", (req, res) => {
+    var messages = [
+        { message: "asdasdf" },
+        { message: "asd23grgwerbasdf" },
+        { message: "asdbdfb sdfbasdf" },
+        { message: "asdasarbdsbrsdfdf" },
+        { message: "asdf" },
+        { message: "asddfasdvasdvasdf" },
+        { message: "asdsdvaseasdf" },
+        { message: "asd" },
+    ];
+
+    res.send({messages: messages});
 });

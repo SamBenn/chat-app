@@ -12,6 +12,10 @@ class Thread extends React.Component {
         this.state = {
             messages: []
         };
+        
+        get("/getmessages").then((result) => {
+            this.setState({ messages: result.data.messages });
+        });
     }
 
     handleSubmission = (form) => {
@@ -19,13 +23,6 @@ class Thread extends React.Component {
             return;
 
         // other validation
-        get("/test", { 
-            headers: {
-                "Access-Control-Allow-Origin": "true"
-            }
-        }).then((result) => {
-            console.log(result);
-        });
         this.setState({ messages: [...this.state.messages, { message: form }] });
     }
     
