@@ -12,7 +12,9 @@ class Thread extends React.Component {
         this.state = {
             messages: []
         };
-        
+    }
+
+    componentDidMount() {
         get("/getmessages").then((result) => {
             this.setState({ messages: result.data.messages });
         });
