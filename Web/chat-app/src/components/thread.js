@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import {get} from '../services/service';
 
 import Message from "./message";
 import Submission from "./submission";
@@ -19,7 +19,11 @@ class Thread extends React.Component {
             return;
 
         // other validation
-        axios.get("/test", { proxy: { port: 5000 }}).then((result) => {
+        get("/test", { 
+            headers: {
+                "Access-Control-Allow-Origin": "true"
+            }
+        }).then((result) => {
             console.log(result);
         });
         this.setState({ messages: [...this.state.messages, { message: form }] });
