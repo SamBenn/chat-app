@@ -24,7 +24,13 @@ export function put(url, data, config) {
 function extendConfig(config) {
     const defaults = {
         headers: {
-            "asdf": "asdaf"
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers':
+              'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Credentials': true,
+            'Access-Control-Allow-Origin': '*',
+            'X-Requested-With': '*',
         }
     }
 
