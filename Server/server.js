@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./database/database')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,17 +17,6 @@ app.use(function(req, res, next) {
 
 app.listen(port, () => { console.log(`Listening on port ${port}`) });
 
-app.get("/getmessages", (req, res) => {
-    var messages = [
-        { message: "asdasdf" },
-        { message: "asd23grgwerbasdf" },
-        { message: "asdbdfb sdfbasdf" },
-        { message: "asdasarbdsbrsdfdf" },
-        { message: "asdf" },
-        { message: "asddfasdvasdvasdf" },
-        { message: "asdsdvaseasdf" },
-        { message: "asd" },
-    ];
+const messagesRoute = require('./routes/messages')
 
-    res.send({messages: messages});
-});
+app.use('/messages', messagesRoute)
