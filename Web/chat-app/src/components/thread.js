@@ -1,11 +1,14 @@
 import React from 'react';
-import {get} from '../services/service';
+import { get, post } from '../services/service';
 
 import Message from "./message";
 import Submission from "./submission";
 import "./thread.css";
 
 class Thread extends React.Component {
+
+    id = "12312312312312"
+
     constructor() {
         super();
 
@@ -15,7 +18,7 @@ class Thread extends React.Component {
     }
 
     componentDidMount() {
-        get("/getmessages").then((result) => {
+        get(`/messages/getMessagesForThread/${this.id}`).then((result) => {
             this.setState({ messages: result.data.messages });
         });
     }
@@ -25,7 +28,12 @@ class Thread extends React.Component {
             return;
 
         // other validation
-        this.setState({ messages: [...this.state.messages, { message: form }] });
+        
+        post('/messages/createMessage', {
+            form: form
+        }).then((result) => {
+            this.setState({ messages: [...this.state.messages, result] });
+        })
     }
     
     render() {

@@ -7,11 +7,23 @@ async function getMessagesForThread(threadId) {
 
     var response = await Message.find()
 
-    console.log(response);
+    return response
+}
 
-    return result
+async function createMessage(form) {
+    console.log("provicer")
+    console.log(form)
+    if(!form)
+    {
+        return { message: "error" };
+    }
+
+    var result = await Message.insertOne({ message: form.message })
+
+    return result;
 }
 
 module.exports = {
-    getMessagesForThread
+    getMessagesForThread,
+    createMessage
 }
